@@ -1,1 +1,1 @@
-# kemmo-test
+for bots, auto screenshot for 40egp/visit
