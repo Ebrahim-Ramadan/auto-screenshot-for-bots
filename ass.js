@@ -10,7 +10,12 @@ const takeScreenshot = async (link) => {
   
   // Navigate to the desired URL
   await page.goto(link);
-  
+  try {
+    await page.waitForSelector('.popup-close-button', { timeout: 5000 });
+    await page.click('.popup-close-button');
+  } catch (err) {
+    console.log('Popup not found, continuing without closing it.');
+  }
   // Take a full-page screenshot in JPEG format with quality 80
   await page.screenshot({ path: `screenshots/${link}.jpg`, type: 'jpeg', fullPage: true, quality: 80 });
   
